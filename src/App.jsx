@@ -205,6 +205,10 @@ export default function App() {
   // Logger State
   const [logs, setLogs] = useState([]);
   const terminalEndRef = useRef(null);
+  const terminalRef = useRef(null);
+  const [terminalPosition, setTerminalPosition] = useState({ x: 32, y: 520 });
+  const [isTerminalDragging, setIsTerminalDragging] = useState(false);
+  const dragStateRef = useRef({ offsetX: 0, offsetY: 0 });
 
   // Wildcard Integrity & Scanning States
   const [scanStatus, setScanStatus] = useState('idle'); // idle | scanning | verified
@@ -285,6 +289,11 @@ export default function App() {
     addLog('system', 'Established secure SSL socket session over port 443.');
     addLog('security', 'AES-256-GCM cipher library loaded into hardware enclave.');
     addLog('user', 'User session authorized for principal: [joseph].');
+  }, []);
+
+  useEffect(() => {
+    if (!terminalRef.current) return;
+    setTerminalPosition(pos => clampTerminalPosition(pos.x, pos.y));
   }, []);
 
   // Reset scan status on file selection change
@@ -472,6 +481,53 @@ export default function App() {
       setFocusedItemId(visibleNodes[0].id);
     }
   };
+
+  const clampTerminalPosition = (x, y) => {
+    const rect = terminalRef.current?.getBoundingClientRect();
+    if (!rect) return { x, y };
+    const maxX = window.innerWidth - rect.width - 12;
+    const maxY = window.innerHeight - rect.height - 12;
+    return {
+      x: Math.max(12, Math.min(x, maxX)),
+      y: Math.max(12, Math.min(y, maxY))
+    };
+  };
+
+  const handleTerminalPointerDown = (event) => {
+    if (event.button !== 0) return;
+    const rect = terminalRef.current?.getBoundingClientRect();
+    if (!rect) return;
+
+    dragStateRef.current = {
+      offsetX: event.clientX - rect.left,
+      offsetY: event.clientY - rect.top
+    };
+    setIsTerminalDragging(true);
+    event.currentTarget.setPointerCapture(event.pointerId);
+  };
+
+  useEffect(() => {
+    const handlePointerMove = (event) => {
+      if (!isTerminalDragging) return;
+      const x = event.clientX - dragStateRef.current.offsetX;
+      const y = event.clientY - dragStateRef.current.offsetY;
+      setTerminalPosition(clampTerminalPosition(x, y));
+    };
+
+    const handlePointerUp = () => {
+      if (!isTerminalDragging) return;
+      setIsTerminalDragging(false);
+    };
+
+    if (isTerminalDragging) {
+      document.addEventListener('pointermove', handlePointerMove);
+      document.addEventListener('pointerup', handlePointerUp);
+      return () => {
+        document.removeEventListener('pointermove', handlePointerMove);
+        document.removeEventListener('pointerup', handlePointerUp);
+      };
+    }
+  }, [isTerminalDragging]);
 
   // ==========================================
   // WILDCARD INTEGRITY RUNNER & DECRYPTER
@@ -825,8 +881,12 @@ export default function App() {
       </main>
 
       {/* 3. BOTTOM CYBER TERMINAL ACTIVITY LOGGER */}
-      <footer className="cyber-terminal">
-        <div className="terminal-header">
+      <footer
+        ref={terminalRef}
+        className="cyber-terminal"
+        style={{ left: `${terminalPosition.x}px`, top: `${terminalPosition.y}px`, transform: 'none' }}
+      >
+        <div className="terminal-header" onPointerDown={handleTerminalPointerDown} style={{ cursor: isTerminalDragging ? 'grabbing' : 'grab' }}>
           <div className="terminal-title-bar">
             <span className="terminal-dot-indicator"></span>
             <span className="node-icon" style={{ margin: 0 }}><TerminalIcon /></span>
