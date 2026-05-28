@@ -1,6 +1,9 @@
 ﻿
 ﻿# SecureVault Dashboard
 
+This Application is deployed on vercel and can be acccessed here:
+Live URL:  https://secure-vault-dashboard-zxka.vercel.app/
+
 A polished enterprise file explorer built with React and Vite. SecureVault Dashboard delivers secure hierarchical navigation, file metadata inspection, keyboard-first accessibility, and a modern cyber-secure UI.
 
 ## Design System
