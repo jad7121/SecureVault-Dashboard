@@ -76,8 +76,31 @@ The wildcard addition is a **Cryptographic Operations Chamber** that elevates th
 
 This feature reinforces SecureVault’s enterprise security narrative while adding tangible value for compliance-focused workflows.
 
+
 ## Notes
 
 - The app uses the provided `data.json` without changing its schema
 - UI components are custom built; no restricted libraries like Bootstrap, Material UI, Chakra UI, or Ant Design are used
 - A design system PDF is included at `design/SecureVault_Design_System.pdf`
+
+## Deployment (Vercel)
+
+You can deploy the project to Vercel for a quick production preview and CI-backed deployment.
+
+Option A — Automatic GitHub deployment (recommended):
+
+1. Push your repository to GitHub (your fork).
+2. Go to https://vercel.com/new and select your GitHub repository.
+3. For Framework Preset choose `Other` or `Vite` (Vercel will detect and use `@vercel/static-build`).
+4. Build Command: `npm run build` — Output Directory: `dist` (this is already configured in `vercel.json`).
+5. Deploy; Vercel will build and publish the site. Subsequent pushes to the branch will trigger automatic deployments.
+
+Option B — Manual CLI deploy:
+
+1. Install Vercel CLI: `npm i -g vercel`.
+2. Authenticate: `vercel login`.
+3. From the project root run: `vercel --prod` and follow prompts.
+
+Notes:
+- The repository includes `vercel.json` which configures the static build to use the `dist` directory produced by `npm run build`.
+- Ensure your fork is public and the GitHub integration has access to the repository if using automatic deployments.

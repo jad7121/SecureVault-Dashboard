@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import rawData from '../data.json';
 
-// ==========================================
+
 // INLINED CUSTOM CYBER SVG ICONS
-// ==========================================
+
 const FolderIcon = ({ open, className }) => (
   <svg className={className} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     {open ? (
@@ -71,9 +71,9 @@ const LockIcon = ({ className }) => (
   </svg>
 );
 
-// ==========================================
+
 // HASH SCAN GENERATOR HELPER
-// ==========================================
+
 function getMockSHA256(filename, size) {
   let hash = 0;
   const str = filename + size;
@@ -91,9 +91,9 @@ function getMockSHA256(filename, size) {
   return result;
 }
 
-// ==========================================
-// RECURSIVE FILE TREE NODE COMPONENT
-// ==========================================
+
+//FILE TREE NODE COMPONENT
+
 function FileTreeNode({ 
   node, 
   depth, 
@@ -189,9 +189,8 @@ function FileTreeNode({
   );
 }
 
-// ==========================================
+
 // MAIN APP COMPONENT
-// ==========================================
 export default function App() {
   // Tree Data
   const [treeData] = useState(rawData);
@@ -276,6 +275,17 @@ export default function App() {
     }].slice(-100)); // Keep last 100 entries
   };
 
+  const handleClearConsole = () => {
+    const now = new Date();
+    const timeStr = now.toTimeString().split(' ')[0] + '.' + String(now.getMilliseconds()).padStart(3, '0');
+    setLogs([{
+      id: Math.random().toString(36).substring(2, 9),
+      timestamp: timeStr,
+      tag: 'system',
+      message: 'Console cleared successfully.'
+    }]);
+  };
+
   // Log terminal automatic scroll to bottom
   useEffect(() => {
     if (terminalEndRef.current) {
@@ -313,9 +323,9 @@ export default function App() {
     }
   }, [selectedItemId]);
 
-  // ==========================================
+  
   // SEARCH & AUTO-EXPAND LOGIC (BONUS AC)
-  // ==========================================
+  
   useEffect(() => {
     if (!searchQuery.trim()) return;
 
@@ -363,9 +373,9 @@ export default function App() {
     setFocusedItemId(node.id);
   };
 
-  // ==========================================
+
   // KEYBOARD ACCESSIBILITY LOGIC (STORY 3 AC)
-  // ==========================================
+  
   // Compute flat list of currently visible nodes in exact rendering order
   const visibleNodes = useMemo(() => {
     const list = [];
@@ -495,6 +505,7 @@ export default function App() {
 
   const handleTerminalPointerDown = (event) => {
     if (event.button !== 0) return;
+    if (event.target.closest('button, a, input, textarea')) return;
     const rect = terminalRef.current?.getBoundingClientRect();
     if (!rect) return;
 
@@ -529,9 +540,9 @@ export default function App() {
     }
   }, [isTerminalDragging]);
 
-  // ==========================================
+  
   // WILDCARD INTEGRITY RUNNER & DECRYPTER
-  // ==========================================
+  
   // 1. Cyber SHA-256 Block Scan Animation
   const startIntegrityVerification = () => {
     if (!selectedItem || selectedItem.type !== 'file') return;
@@ -880,7 +891,7 @@ export default function App() {
         </section>
       </main>
 
-      {/* 3. BOTTOM CYBER TERMINAL ACTIVITY LOGGER */}
+      
       <footer
         ref={terminalRef}
         className="cyber-terminal"
@@ -893,7 +904,7 @@ export default function App() {
             <span>SecureVault Auditing & Activity Ledger</span>
           </div>
           <div className="terminal-controls">
-            <button className="terminal-control-btn" onClick={() => setLogs([])}>Clear Console</button>
+            <button className="terminal-control-btn" onClick={handleClearConsole}>Clear Console</button>
           </div>
         </div>
 
