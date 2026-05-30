@@ -97,12 +97,9 @@ The wildcard addition is a **Cryptographic Operations Chamber** that elevates th
 This feature reinforces SecureVault’s enterprise security narrative while adding tangible value for compliance-focused workflows.
 
 ## Screenshots
-![App Screenshot 1](Screenshots/pic 1.png)
-![App Screenshot 1](Screenshots/pic 2.png)
-![App Screenshot 1](Screenshots/pic 3.png)
-![App Screenshot 1](Screenshots/pic 4.png)
-![App Screenshot 1](Screenshots/pic 5.png)
-![alt text](<Screenshots/pic 2.png>)
+![App Screenshot 1](<Screenshots/pic 1.png>)
+![App Screenshot 2](<Screenshots/pic 2.png>)
+![App Screenshot 3](<Screenshots/pic 3.png>)
 
 
 ## Notes
