@@ -75,7 +75,7 @@ The folder tree is rendered with a recursive React component named `FileTreeNode
 
 This approach supports deep hierarchies without structural issues.
 ## Example code
-    {
+{
   \"id\": \"root_1\",
   \"name\": \"01_Legal_Department\",
   \"type\": \"folder\",
