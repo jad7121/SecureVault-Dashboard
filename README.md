@@ -20,8 +20,7 @@ A polished enterprise file explorer built with React and Vite. SecureVault Dashb
 
 The application follows a dedicated dark-mode design system with clear tokens for typography, color, spacing, and component states.
 
-- **Design export:** [SecureVault Design System PDF](./design/SecureVault_Design_System.pdf)
-[text](<https://github.com/jad7121/SecureVault-Dashboard/blob/main/design/SecureVault%20Design%20System.pdf>)
+- **Design export:** https://github.com/jad7121/SecureVault-Dashboard/blob/main/design/SecureVault%20Design%20System.pdf
 - **Typography:** `Inter` for UI, `JetBrains Mono` for terminal and metadata text
 - **Color palette:** deep navy canvas, dark surfaces, neon secure green, cyan focus accents, muted gray text
 - **Spacing grid:** 4px, 8px, 16px, 24px, 32px
