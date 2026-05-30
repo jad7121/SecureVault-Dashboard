@@ -1,8 +1,18 @@
 ﻿
-﻿# SecureVault Dashboard
+## SecureVault Dashboard
 
 This Application is deployed on vercel and can be acccessed here:
 Live URL:  https://secure-vault-dashboard-zxka.vercel.app/
+
+## Overview
+SecureVault provides secure cloud storage for enterprise clients, but their existing frontend made navigating large folder structures difficult.
+This project rebuilds that experience into a performant and intuitive file explorer that supports:
+
+- Deeply nested folder navigation
+- Keyboard-first interaction
+- File inspection via a properties panel
+- A modern enterprise-focused UI
+- Real-time search and filtering
 
 A polished enterprise file explorer built with React and Vite. SecureVault Dashboard delivers secure hierarchical navigation, file metadata inspection, keyboard-first accessibility, and a modern cyber-secure UI.
 
@@ -36,6 +46,9 @@ The application follows a dedicated dark-mode design system with clear tokens fo
 ### Run locally
 
 ```bash
+git clone https://github.com/JosephAcquahDwamena/SecureVault-Dashboard.git
+cd desktop
+cd SecureVault-Dashboard
 npm install
 npm run dev
 ```
@@ -48,6 +61,9 @@ Then open `http://localhost:3000`.
 npm run build
 npm run preview
 ```
+
+## Tech stack
+React 19, Vite 6 plain CSS and json . 
 
 ## Recursive Strategy
 
@@ -79,6 +95,13 @@ The wildcard addition is a **Cryptographic Operations Chamber** that elevates th
 - Real-time audit logging in a draggable console
 
 This feature reinforces SecureVault’s enterprise security narrative while adding tangible value for compliance-focused workflows.
+
+## Screenshots
+![App Screenshot 1](Screenshots/pic 1.png)
+![App Screenshot 1](Screenshots/pic 2.png)
+![App Screenshot 1](Screenshots/pic 3.png)
+![App Screenshot 1](Screenshots/pic 4.png)
+![App Screenshot 1](Screenshots/pic 5.png)
 
 
 ## Notes
