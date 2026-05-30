@@ -102,6 +102,7 @@ This feature reinforces SecureVault’s enterprise security narrative while addi
 ![App Screenshot 1](Screenshots/pic 3.png)
 ![App Screenshot 1](Screenshots/pic 4.png)
 ![App Screenshot 1](Screenshots/pic 5.png)
+![alt text](<Screenshots/pic 2.png>)
 
 
 ## Notes
