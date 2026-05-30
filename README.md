@@ -100,6 +100,7 @@ This feature reinforces SecureVault’s enterprise security narrative while addi
 ![App Screenshot 1](<Screenshots/pic 1.png>)
 ![App Screenshot 2](<Screenshots/pic 2.png>)
 ![App Screenshot 3](<Screenshots/pic 3.png>)
+![App Screenshot 4](<Screenshots/pic 4.png>)
 
 
 ## Notes
