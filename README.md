@@ -74,6 +74,13 @@ The folder tree is rendered with a recursive React component named `FileTreeNode
 - Expansion state is stored in a single `Set<string>` called `expandedFolders`, enabling efficient toggles and rendering.
 
 This approach supports deep hierarchies without structural issues.
+## Example code
+    {
+  \"id\": \"root_1\",
+  \"name\": \"01_Legal_Department\",
+  \"type\": \"folder\",
+  \"children\": [...]  // recursive nesting
+}
 
 ## Keyboard Accessibility
 
